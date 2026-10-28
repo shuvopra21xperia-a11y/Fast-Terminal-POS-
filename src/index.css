@@ -1,0 +1,1375 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  :root[data-theme-mode="light"] {
+    color-scheme: light;
+  }
+
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ============================================================================
+   MULTI-THEME & CLASSIC / SIMPLE WORKSPACE ENGINE
+   High-Legibility WCAG AA/AAA Contrast System across all 10 Themes:
+   0) dark              - Dark Slate Pro (Soft Charcoal Slate — zero pitch-black glare)
+   1) light             - Light Theme (Clinical Daylight)
+   2) classic           - Classic Theme (Win32 / Traditional ERP)
+   3) off-white         - Off-White Theme (Warm Ivory Paper)
+   4) off-white-gray    - Off-White & Gray Theme (Two-Tone Ledger)
+   5) white-gray        - White & Gray Theme (Enterprise Grid)
+   6) windows-10        - Windows 10 Theme (Fluent Metro #0078D7)
+   7) windows-xp        - Windows XP Theme (Luna Royal Blue & Kelly Green)
+   8) modern            - Modern Theme (Contemporary Alabaster SaaS)
+   9) white-green-neon  - White · Off-White · Light Green · Neon Theme
+   ============================================================================ */
+
+/* 0. Dark Slate Pro (Balanced Soft Slate — Not Pitch Black, Crisp High-Contrast Fonts) */
+:root[data-theme="dark"],
+[data-preview-theme="dark"] {
+  --t-titlebar-bg: #111827;
+  --t-titlebar-fg: #f8fafc;
+  --t-titlebar-border: #2b3b55;
+  --t-menubar-bg: #182236;
+  --t-sidebar-bg: #141d2f;
+  --t-canvas: #1a253b;
+  --t-canvas-alt: #1f2c46;
+  --t-card: #141d2f;
+  --t-subtle: #263552;
+  --t-muted: #344769;
+  --t-border: #2f405e;
+  --t-border-strong: #43587d;
+  --t-text-primary: #f8fafc;
+  --t-text-secondary: #e8eef6;
+  --t-text-body: #d5dfec;
+  --t-text-muted: #b8c7da;
+  --t-text-faint: #9ab0ca;
+  --t-primary-bg: #059669;
+  --t-primary-fg: #ffffff;
+  --t-radius-sm: 4px;
+  --t-radius-md: 6px;
+  --t-radius-lg: 8px;
+}
+
+/* Soften Dark Mode surfaces & boost muted font visibility so nothing is pitch-black or dim */
+:root:not([data-theme-mode="light"]),
+:root[data-theme="dark"] {
+  --color-slate-950: #141d2f;
+  --color-slate-900: #1b263d;
+  --color-slate-800: #263552;
+  --color-slate-700: #36496b;
+  --color-slate-600: #475b82;
+  --color-slate-500: #9eb2cb;
+  --color-slate-400: #b8c7da;
+  --color-slate-300: #d6e0ed;
+  --color-slate-200: #eaf0f7;
+  --color-slate-100: #f8fafc;
+  --color-emerald-950: #093d30;
+  --color-sky-950: #0e3859;
+  --color-indigo-950: #23215c;
+  --color-purple-950: #36195c;
+  --color-amber-950: #452809;
+  --color-rose-950: #4a1224;
+  background-color: #141d2f;
+  color: #f8fafc;
+}
+
+:root:not([data-theme-mode="light"]) .text-slate-600,
+:root[data-theme="dark"] .text-slate-600 {
+  color: #8ea2bd !important;
+}
+
+:root:not([data-theme-mode="light"]) .text-slate-500,
+:root[data-theme="dark"] .text-slate-500 {
+  color: #a3b6ce !important;
+}
+
+:root[data-theme="dark"] .border-slate-850,
+:root[data-theme="dark"] .border-slate-800,
+:root[data-theme="dark"] .border-slate-800\/90,
+:root[data-theme="dark"] .border-slate-800\/80,
+:root[data-theme="dark"] .border-slate-800\/70,
+:root[data-theme="dark"] .border-slate-800\/60 {
+  border-color: #2f405e !important;
+}
+
+:root[data-theme="dark"] .border-slate-700,
+:root[data-theme="dark"] .border-slate-700\/80,
+:root[data-theme="dark"] .border-slate-700\/60 {
+  border-color: #43587d !important;
+}
+
+:root[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not(.bg-transparent),
+:root[data-theme="dark"] select:not(.bg-transparent),
+:root[data-theme="dark"] textarea:not(.bg-transparent) {
+  background-color: #101726 !important;
+  color: #f8fafc !important;
+  border-color: #43587d !important;
+}
+
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder {
+  color: #8ea2bd !important;
+}
+
+/* Keep dark-ink text on bright emerald-500 / amber-500 pills crisp in Dark Mode */
+:root[data-theme="dark"] .bg-emerald-500.text-slate-950,
+:root[data-theme="dark"] .bg-amber-500.text-slate-950 {
+  color: #071912 !important;
+}
+
+/* 1. Light Theme (Clinical Daylight) */
+:root[data-theme="light"],
+[data-preview-theme="light"] {
+  --t-titlebar-bg: #e8eef5;
+  --t-titlebar-fg: #0f172a;
+  --t-titlebar-border: #cbd5e1;
+  --t-menubar-bg: #f8fafc;
+  --t-sidebar-bg: #ffffff;
+  --t-canvas: #f1f5f9;
+  --t-canvas-alt: #f8fafc;
+  --t-card: #ffffff;
+  --t-subtle: #e2e8f0;
+  --t-muted: #cbd5e1;
+  --t-border: #cbd5e1;
+  --t-border-strong: #94a3b8;
+  --t-text-primary: #0f172a;
+  --t-text-secondary: #1e293b;
+  --t-text-body: #293548;
+  --t-text-muted: #3e4c63;
+  --t-text-faint: #52627a;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #059669;
+  --t-primary-hover: #047857;
+  --t-primary-fg: #ffffff;
+  --t-primary-border: #059669;
+  --t-accent-text: #047857;
+  --t-accent-soft-bg: #e6f9f0;
+  --t-accent-soft-fg: #064e3b;
+  --t-accent-soft-border: #6ee7b7;
+  --t-radius-sm: 4px;
+  --t-radius-md: 6px;
+  --t-radius-lg: 8px;
+}
+
+/* 2. Classic Theme (Traditional Win32 / Accounting ERP) */
+:root[data-theme="classic"],
+[data-preview-theme="classic"] {
+  --t-titlebar-bg: linear-gradient(90deg, #0a246a 0%, #3a6ea5 100%);
+  --t-titlebar-fg: #ffffff;
+  --t-titlebar-border: #081c52;
+  --t-menubar-bg: #dfdcd4;
+  --t-sidebar-bg: #e5e2da;
+  --t-canvas: #eeebe3;
+  --t-canvas-alt: #e6e3db;
+  --t-card: #ffffff;
+  --t-subtle: #dad6cc;
+  --t-muted: #c8c3b8;
+  --t-border: #9e9a90;
+  --t-border-strong: #78746a;
+  --t-text-primary: #0f0f0f;
+  --t-text-secondary: #1c1c1c;
+  --t-text-body: #292929;
+  --t-text-muted: #3d3b37;
+  --t-text-faint: #524f49;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #004a8f;
+  --t-primary-hover: #003970;
+  --t-primary-fg: #ffffff;
+  --t-primary-border: #003566;
+  --t-accent-text: #004280;
+  --t-accent-soft-bg: #e3eef9;
+  --t-accent-soft-fg: #002b54;
+  --t-accent-soft-border: #7aa7d6;
+  --t-radius-sm: 1px;
+  --t-radius-md: 2px;
+  --t-radius-lg: 2px;
+}
+
+/* 3. Off-White Theme (Warm Ivory & Parchment Paper) */
+:root[data-theme="off-white"],
+[data-preview-theme="off-white"] {
+  --t-titlebar-bg: #eae3d4;
+  --t-titlebar-fg: #1c1917;
+  --t-titlebar-border: #cfc6b2;
+  --t-menubar-bg: #f3ede0;
+  --t-sidebar-bg: #f5f0e5;
+  --t-canvas: #f8f5ec;
+  --t-canvas-alt: #f2ece0;
+  --t-card: #fffdf9;
+  --t-subtle: #e8e1d1;
+  --t-muted: #d9d0bd;
+  --t-border: #cfc6b4;
+  --t-border-strong: #ad9f85;
+  --t-text-primary: #171412;
+  --t-text-secondary: #26221e;
+  --t-text-body: #36302a;
+  --t-text-muted: #4a423b;
+  --t-text-faint: #5e554c;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #15803d;
+  --t-primary-hover: #166534;
+  --t-primary-fg: #ffffff;
+  --t-primary-border: #15803d;
+  --t-accent-text: #166534;
+  --t-accent-soft-bg: #e7f6ec;
+  --t-accent-soft-fg: #14532d;
+  --t-accent-soft-border: #86efac;
+  --t-radius-sm: 4px;
+  --t-radius-md: 6px;
+  --t-radius-lg: 8px;
+}
+
+/* 4. Off-White & Gray Theme (Architectural Two-Tone Contrast) */
+:root[data-theme="off-white-gray"],
+[data-preview-theme="off-white-gray"] {
+  --t-titlebar-bg: #d5dae2;
+  --t-titlebar-fg: #0f172a;
+  --t-titlebar-border: #b6bec9;
+  --t-menubar-bg: #e2e5eb;
+  --t-sidebar-bg: #e5e8ee;
+  --t-canvas: #f5f4ec;
+  --t-canvas-alt: #ecebe2;
+  --t-card: #fdfcf8;
+  --t-subtle: #dfe3ea;
+  --t-muted: #ccd2dc;
+  --t-border: #bfc6d2;
+  --t-border-strong: #949eae;
+  --t-text-primary: #0f172a;
+  --t-text-secondary: #1e293b;
+  --t-text-body: #2d3848;
+  --t-text-muted: #404c5e;
+  --t-text-faint: #536175;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #0f766e;
+  --t-primary-hover: #115e59;
+  --t-primary-fg: #ffffff;
+  --t-primary-border: #0f766e;
+  --t-accent-text: #0f766e;
+  --t-accent-soft-bg: #e4f6f4;
+  --t-accent-soft-fg: #134e4a;
+  --t-accent-soft-border: #5eead4;
+  --t-radius-sm: 4px;
+  --t-radius-md: 6px;
+  --t-radius-lg: 8px;
+}
+
+/* 5. White & Gray Theme (Enterprise Studio Contrast) */
+:root[data-theme="white-gray"],
+[data-preview-theme="white-gray"] {
+  --t-titlebar-bg: #dde1e7;
+  --t-titlebar-fg: #0f172a;
+  --t-titlebar-border: #bfc6d1;
+  --t-menubar-bg: #e8ecf1;
+  --t-sidebar-bg: #ebeff4;
+  --t-canvas: #f3f4f6;
+  --t-canvas-alt: #e7e9ee;
+  --t-card: #ffffff;
+  --t-subtle: #e2e6ec;
+  --t-muted: #cfd5df;
+  --t-border: #c5cdd9;
+  --t-border-strong: #94a3b8;
+  --t-text-primary: #0f172a;
+  --t-text-secondary: #1e293b;
+  --t-text-body: #2c384a;
+  --t-text-muted: #3f4d63;
+  --t-text-faint: #526178;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #1d4ed8;
+  --t-primary-hover: #1e40af;
+  --t-primary-fg: #ffffff;
+  --t-primary-border: #1d4ed8;
+  --t-accent-text: #1e40af;
+  --t-accent-soft-bg: #e8f0fe;
+  --t-accent-soft-fg: #1e3a8a;
+  --t-accent-soft-border: #93c5fd;
+  --t-radius-sm: 4px;
+  --t-radius-md: 6px;
+  --t-radius-lg: 6px;
+}
+
+/* 6. Windows 10 Theme (Microsoft Fluent Metro Desktop) */
+:root[data-theme="windows-10"],
+[data-preview-theme="windows-10"] {
+  --t-titlebar-bg: #0078d7;
+  --t-titlebar-fg: #ffffff;
+  --t-titlebar-border: #005a9e;
+  --t-menubar-bg: #f0f0f0;
+  --t-sidebar-bg: #ececec;
+  --t-canvas: #f6f6f6;
+  --t-canvas-alt: #ededed;
+  --t-card: #ffffff;
+  --t-subtle: #e3e3e3;
+  --t-muted: #d2d2d2;
+  --t-border: #c6c6c6;
+  --t-border-strong: #949494;
+  --t-text-primary: #111111;
+  --t-text-secondary: #1f1f1f;
+  --t-text-body: #2e2e2e;
+  --t-text-muted: #454545;
+  --t-text-faint: #595959;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #0078d7;
+  --t-primary-hover: #005a9e;
+  --t-primary-fg: #ffffff;
+  --t-primary-border: #005a9e;
+  --t-accent-text: #005a9e;
+  --t-accent-soft-bg: #e3f1fc;
+  --t-accent-soft-fg: #003b6d;
+  --t-accent-soft-border: #75b6eb;
+  --t-radius-sm: 0px;
+  --t-radius-md: 1px;
+  --t-radius-lg: 2px;
+}
+
+/* 7. Windows XP Theme (Luna Royal Blue & Kelly Green) */
+:root[data-theme="windows-xp"],
+[data-preview-theme="windows-xp"] {
+  --t-titlebar-bg: linear-gradient(180deg, #0997ff 0%, #0053ee 12%, #0050ee 55%, #003dd9 100%);
+  --t-titlebar-fg: #ffffff;
+  --t-titlebar-border: #002ea3;
+  --t-menubar-bg: #ece9d8;
+  --t-sidebar-bg: linear-gradient(180deg, #dce4f9 0%, #c8d6f7 100%);
+  --t-canvas: #f4f2e8;
+  --t-canvas-alt: #ece9d8;
+  --t-card: #ffffff;
+  --t-subtle: #e3e0cf;
+  --t-muted: #d2cebc;
+  --t-border: #7f9db9;
+  --t-border-strong: #4f6f8f;
+  --t-text-primary: #0b192c;
+  --t-text-secondary: #15253b;
+  --t-text-body: #22334a;
+  --t-text-muted: #384961;
+  --t-text-faint: #4c5d75;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #2e8b22;
+  --t-primary-hover: #24701a;
+  --t-primary-fg: #ffffff;
+  --t-primary-border: #1e6115;
+  --t-accent-text: #0046d5;
+  --t-accent-soft-bg: #e6f4e3;
+  --t-accent-soft-fg: #174d10;
+  --t-accent-soft-border: #7fc674;
+  --t-radius-sm: 3px;
+  --t-radius-md: 4px;
+  --t-radius-lg: 5px;
+}
+
+/* 8. Modern Theme (Contemporary Alabaster Studio SaaS) */
+:root[data-theme="modern"],
+[data-preview-theme="modern"] {
+  --t-titlebar-bg: #ffffff;
+  --t-titlebar-fg: #0f172a;
+  --t-titlebar-border: #dce3ee;
+  --t-menubar-bg: #ffffff;
+  --t-sidebar-bg: #ffffff;
+  --t-canvas: #f3f6fb;
+  --t-canvas-alt: #eaeff7;
+  --t-card: #ffffff;
+  --t-subtle: #e6ecf5;
+  --t-muted: #d5dfed;
+  --t-border: #d2dbe8;
+  --t-border-strong: #a7b6cc;
+  --t-text-primary: #0f172a;
+  --t-text-secondary: #1e293b;
+  --t-text-body: #2c384b;
+  --t-text-muted: #404f66;
+  --t-text-faint: #53637a;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #0d9488;
+  --t-primary-hover: #0f766e;
+  --t-primary-fg: #ffffff;
+  --t-primary-border: #0d9488;
+  --t-accent-text: #0f766e;
+  --t-accent-soft-bg: #e6faf6;
+  --t-accent-soft-fg: #115e59;
+  --t-accent-soft-border: #5eead4;
+  --t-radius-sm: 6px;
+  --t-radius-md: 8px;
+  --t-radius-lg: 12px;
+}
+
+/* 9. White · Off-White · Light Green · Neon Theme */
+:root[data-theme="white-green-neon"],
+[data-preview-theme="white-green-neon"] {
+  --t-titlebar-bg: #dcfce7;
+  --t-titlebar-fg: #072613;
+  --t-titlebar-border: #86efac;
+  --t-menubar-bg: #edfdf3;
+  --t-sidebar-bg: #ecfdf3;
+  --t-canvas: #f7faf5;
+  --t-canvas-alt: #eef6ec;
+  --t-card: #ffffff;
+  --t-subtle: #e1f5e8;
+  --t-muted: #c8ebd5;
+  --t-border: #92dba9;
+  --t-border-strong: #48bb78;
+  --t-text-primary: #082011;
+  --t-text-secondary: #12301d;
+  --t-text-body: #1e3f2a;
+  --t-text-muted: #30543e;
+  --t-text-faint: #436851;
+  --t-input-bg: #ffffff;
+  --t-primary-bg: #00e676;
+  --t-primary-hover: #00c853;
+  --t-primary-fg: #042612;
+  --t-primary-border: #00b84c;
+  --t-accent-text: #047835;
+  --t-accent-soft-bg: #e3fcef;
+  --t-accent-soft-fg: #052e16;
+  --t-accent-soft-border: #34d399;
+  --t-radius-sm: 6px;
+  --t-radius-md: 8px;
+  --t-radius-lg: 10px;
+}
+
+/* ============================================================================
+   GLOBAL LIGHT-SPECTRUM APPLICATION MAPPINGS (Applies to all 9 non-dark themes)
+   ============================================================================ */
+
+/* Remap Tailwind v4 950/900 semantic tint tokens so ALL /10../95 opacity mixes,
+   gradients (from-*-950/95), and hover:bg-*-950/* resolve to clean light pastels */
+:root[data-theme-mode="light"] {
+  --color-emerald-950: var(--t-accent-soft-bg);
+  --color-emerald-900: #d1fae5;
+  --color-green-950: #dcfce7;
+  --color-green-900: #bbf7d0;
+  --color-teal-950: #ccfbf1;
+  --color-cyan-950: #cffafe;
+  --color-cyan-900: #a5f3fc;
+  --color-sky-950: #e0f2fe;
+  --color-sky-900: #bae6fd;
+  --color-blue-950: #dbeafe;
+  --color-blue-900: #bfdbfe;
+  --color-indigo-950: #e0e7ff;
+  --color-indigo-900: #c7d2fe;
+  --color-purple-950: #f3e8ff;
+  --color-amber-950: #fef3c7;
+  --color-amber-900: #fde68a;
+  --color-yellow-950: #fef9c3;
+  --color-rose-950: #ffe4e6;
+  --color-rose-900: #fecdd3;
+  --color-red-950: #fee2e2;
+}
+
+:root[data-theme-mode="light"],
+:root[data-theme-mode="light"] body,
+:root[data-theme-mode="light"] #root {
+  background-color: var(--t-canvas);
+  color: var(--t-text-primary);
+}
+
+/* Neutral Slate Surface Mappings */
+:root[data-theme-mode="light"] .bg-slate-950,
+:root[data-theme-mode="light"] .bg-slate-950\/95,
+:root[data-theme-mode="light"] .bg-slate-950\/90,
+:root[data-theme-mode="light"] .bg-slate-950\/80,
+:root[data-theme-mode="light"] .bg-slate-950\/70,
+:root[data-theme-mode="light"] .bg-slate-950\/60,
+:root[data-theme-mode="light"] .bg-slate-950\/50,
+:root[data-theme-mode="light"] .bg-slate-950\/40,
+:root[data-theme-mode="light"] .bg-slate-950\/30 {
+  background-color: var(--t-card) !important;
+}
+
+/* Preserve semi-transparent dark scrim on fullscreen child windows & modals */
+:root[data-theme-mode="light"] .fixed.inset-0.bg-slate-950\/90,
+:root[data-theme-mode="light"] .fixed.inset-0.bg-slate-950\/85,
+:root[data-theme-mode="light"] .fixed.inset-0.bg-slate-950\/80,
+:root[data-theme-mode="light"] .fixed.inset-0.bg-slate-950\/75,
+:root[data-theme-mode="light"] .fixed.inset-0.bg-slate-950\/70,
+:root[data-theme-mode="light"] .fixed.inset-0.bg-slate-900\/80 {
+  background-color: rgba(15, 23, 42, 0.48) !important;
+}
+
+:root[data-theme-mode="light"] .bg-slate-900 {
+  background-color: var(--t-canvas) !important;
+}
+
+:root[data-theme-mode="light"] .bg-slate-900\/95,
+:root[data-theme-mode="light"] .bg-slate-900\/90,
+:root[data-theme-mode="light"] .bg-slate-900\/80,
+:root[data-theme-mode="light"] .bg-slate-900\/70,
+:root[data-theme-mode="light"] .bg-slate-900\/60,
+:root[data-theme-mode="light"] .bg-slate-900\/50,
+:root[data-theme-mode="light"] .bg-slate-900\/40,
+:root[data-theme-mode="light"] .bg-slate-900\/30 {
+  background-color: var(--t-canvas-alt) !important;
+}
+
+:root[data-theme-mode="light"] .bg-slate-850,
+:root[data-theme-mode="light"] .bg-slate-800,
+:root[data-theme-mode="light"] .bg-slate-800\/90,
+:root[data-theme-mode="light"] .bg-slate-800\/80,
+:root[data-theme-mode="light"] .bg-slate-800\/70,
+:root[data-theme-mode="light"] .bg-slate-800\/60,
+:root[data-theme-mode="light"] .bg-slate-800\/50,
+:root[data-theme-mode="light"] .bg-slate-800\/40 {
+  background-color: var(--t-subtle) !important;
+}
+
+:root[data-theme-mode="light"] .bg-slate-700,
+:root[data-theme-mode="light"] .bg-slate-600 {
+  background-color: var(--t-muted) !important;
+}
+
+/* Toggle Switch Track Visibility in Light Mode */
+:root[data-theme-mode="light"] .peer.bg-slate-800 {
+  background-color: var(--t-border-strong) !important;
+}
+
+/* Gradient Toast & Banner Overrides in Light Mode */
+:root[data-theme-mode="light"] .from-slate-900 {
+  --tw-gradient-from: var(--t-canvas) !important;
+}
+
+:root[data-theme-mode="light"] .to-slate-900\/95,
+:root[data-theme-mode="light"] .to-slate-950 {
+  --tw-gradient-to: var(--t-card) !important;
+}
+
+:root[data-theme-mode="light"] .shadow-black\/60 {
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.14), 0 4px 10px -4px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Dedicated OS / Desktop Chrome Regions */
+:root[data-theme-mode="light"] .app-titlebar {
+  background: var(--t-titlebar-bg) !important;
+  color: var(--t-titlebar-fg) !important;
+  border-color: var(--t-titlebar-border) !important;
+}
+
+:root[data-theme-mode="light"] .app-titlebar span,
+:root[data-theme-mode="light"] .app-titlebar button:not(:hover),
+:root[data-theme-mode="light"] .app-titlebar button:not(:hover) svg {
+  color: var(--t-titlebar-fg) !important;
+}
+
+:root[data-theme-mode="light"] .app-menubar {
+  background: var(--t-menubar-bg) !important;
+  border-color: var(--t-border) !important;
+}
+
+:root[data-theme-mode="light"] .app-sidebar {
+  background: var(--t-sidebar-bg) !important;
+  border-color: var(--t-border) !important;
+}
+
+:root[data-theme-mode="light"] .app-sidebar > .bg-slate-950 {
+  background: transparent !important;
+}
+
+/* Borders & Dividers */
+:root[data-theme-mode="light"] .border-slate-900,
+:root[data-theme-mode="light"] .border-slate-850,
+:root[data-theme-mode="light"] .border-slate-800,
+:root[data-theme-mode="light"] .border-slate-800\/90,
+:root[data-theme-mode="light"] .border-slate-800\/80,
+:root[data-theme-mode="light"] .border-slate-800\/70,
+:root[data-theme-mode="light"] .border-slate-800\/60,
+:root[data-theme-mode="light"] .border-slate-800\/40,
+:root[data-theme-mode="light"] .border-slate-800\/20 {
+  border-color: var(--t-border) !important;
+}
+
+:root[data-theme-mode="light"] .border-slate-700,
+:root[data-theme-mode="light"] .border-slate-700\/80,
+:root[data-theme-mode="light"] .border-slate-700\/60,
+:root[data-theme-mode="light"] .border-slate-700\/40 {
+  border-color: var(--t-border-strong) !important;
+}
+
+:root[data-theme-mode="light"] .divide-slate-850 > :not([hidden]) ~ :not([hidden]),
+:root[data-theme-mode="light"] .divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+:root[data-theme-mode="light"] .divide-slate-800\/80 > :not([hidden]) ~ :not([hidden]),
+:root[data-theme-mode="light"] .divide-slate-800\/70 > :not([hidden]) ~ :not([hidden]),
+:root[data-theme-mode="light"] .divide-slate-800\/60 > :not([hidden]) ~ :not([hidden]),
+:root[data-theme-mode="light"] .divide-slate-800\/50 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--t-border) !important;
+}
+
+/* Typography Hierarchy (Crisp High-Contrast Ink across all Light Themes) */
+:root[data-theme-mode="light"] .text-white,
+:root[data-theme-mode="light"] .text-slate-50,
+:root[data-theme-mode="light"] .text-slate-100 {
+  color: var(--t-text-primary) !important;
+}
+
+:root[data-theme-mode="light"] .text-slate-200 {
+  color: var(--t-text-secondary) !important;
+}
+
+:root[data-theme-mode="light"] .text-slate-300 {
+  color: var(--t-text-body) !important;
+}
+
+:root[data-theme-mode="light"] .text-slate-400 {
+  color: var(--t-text-muted) !important;
+}
+
+:root[data-theme-mode="light"] .text-slate-500,
+:root[data-theme-mode="light"] .text-slate-600 {
+  color: var(--t-text-faint) !important;
+}
+
+/* Decorative Empty-State Icons using text-slate-700 / text-slate-800 outside white slips */
+:root[data-theme-mode="light"] svg.text-slate-700,
+:root[data-theme-mode="light"] svg.text-slate-800 {
+  color: var(--t-border-strong) !important;
+}
+
+/* Primary Brand & Active Selection Solid Controls */
+:root[data-theme-mode="light"] .bg-emerald-600,
+:root[data-theme-mode="light"] .bg-emerald-600\/90,
+:root[data-theme-mode="light"] .bg-emerald-500,
+:root[data-theme-mode="light"] .bg-emerald-700,
+:root[data-theme-mode="light"] .bg-green-600 {
+  background-color: var(--t-primary-bg) !important;
+  border-color: var(--t-primary-border) !important;
+  color: var(--t-primary-fg) !important;
+}
+
+:root[data-theme-mode="light"] .hover\:bg-emerald-400:hover,
+:root[data-theme-mode="light"] .hover\:bg-emerald-500:hover,
+:root[data-theme-mode="light"] .hover\:bg-emerald-600:hover,
+:root[data-theme-mode="light"] .hover\:bg-emerald-700:hover {
+  background-color: var(--t-primary-hover) !important;
+  color: var(--t-primary-fg) !important;
+}
+
+/* Protect Foreground Contrast inside ALL Primary & Solid Semantic Buttons */
+:root[data-theme-mode="light"] .bg-emerald-600.text-white,
+:root[data-theme-mode="light"] .bg-emerald-600.text-slate-950,
+:root[data-theme-mode="light"] .bg-emerald-500.text-white,
+:root[data-theme-mode="light"] .bg-emerald-500.text-slate-950,
+:root[data-theme-mode="light"] .bg-emerald-700.text-white,
+:root[data-theme-mode="light"] .bg-emerald-600 .text-white,
+:root[data-theme-mode="light"] .bg-emerald-600 .text-slate-950,
+:root[data-theme-mode="light"] .bg-emerald-600 .text-emerald-100,
+:root[data-theme-mode="light"] .bg-emerald-600 .text-emerald-200,
+:root[data-theme-mode="light"] .bg-emerald-600 span,
+:root[data-theme-mode="light"] .bg-emerald-600 svg,
+:root[data-theme-mode="light"] .bg-emerald-500 span,
+:root[data-theme-mode="light"] .bg-emerald-500 svg,
+:root[data-theme-mode="light"] .bg-emerald-700 span,
+:root[data-theme-mode="light"] .bg-emerald-700 svg {
+  color: var(--t-primary-fg) !important;
+}
+
+:root[data-theme-mode="light"] .bg-rose-600,
+:root[data-theme-mode="light"] .bg-rose-700,
+:root[data-theme-mode="light"] .bg-indigo-600,
+:root[data-theme-mode="light"] .bg-blue-600,
+:root[data-theme-mode="light"] .bg-sky-600,
+:root[data-theme-mode="light"] .bg-amber-600,
+:root[data-theme-mode="light"] .bg-rose-600 span,
+:root[data-theme-mode="light"] .bg-rose-600 svg,
+:root[data-theme-mode="light"] .bg-rose-700 span,
+:root[data-theme-mode="light"] .bg-rose-700 svg,
+:root[data-theme-mode="light"] .bg-indigo-600 span,
+:root[data-theme-mode="light"] .bg-indigo-600 svg,
+:root[data-theme-mode="light"] .bg-blue-600 span,
+:root[data-theme-mode="light"] .bg-blue-600 svg,
+:root[data-theme-mode="light"] .bg-sky-600 span,
+:root[data-theme-mode="light"] .bg-sky-600 svg,
+:root[data-theme-mode="light"] .bg-amber-600 span,
+:root[data-theme-mode="light"] .bg-amber-600 svg {
+  color: #ffffff !important;
+}
+
+:root[data-theme-mode="light"] .bg-amber-500.text-slate-950,
+:root[data-theme-mode="light"] .bg-amber-500 .text-slate-950 {
+  background-color: #f59e0b !important;
+  color: #0f172a !important;
+}
+
+/* ============================================================================
+   SEMANTIC TINTED SURFACES, BORDERS & TEXT IN LIGHT THEMES (ZERO DARK BOX LEAKS)
+   ============================================================================ */
+
+/* 1) EMERALD / GREEN / TEAL CALLOUTS, BADGES & SELECTED CARDS */
+:root[data-theme-mode="light"] .bg-emerald-950,
+:root[data-theme-mode="light"] .bg-emerald-950\/90,
+:root[data-theme-mode="light"] .bg-emerald-950\/80,
+:root[data-theme-mode="light"] .bg-emerald-950\/70,
+:root[data-theme-mode="light"] .bg-emerald-950\/60,
+:root[data-theme-mode="light"] .bg-emerald-950\/50,
+:root[data-theme-mode="light"] .bg-emerald-950\/40,
+:root[data-theme-mode="light"] .bg-emerald-950\/30,
+:root[data-theme-mode="light"] .bg-emerald-950\/20,
+:root[data-theme-mode="light"] .bg-emerald-800\/80,
+:root[data-theme-mode="light"] .bg-emerald-600\/30,
+:root[data-theme-mode="light"] .bg-emerald-600\/20,
+:root[data-theme-mode="light"] .bg-emerald-500\/20,
+:root[data-theme-mode="light"] .bg-emerald-500\/10,
+:root[data-theme-mode="light"] .bg-green-950\/40,
+:root[data-theme-mode="light"] .bg-green-500\/20,
+:root[data-theme-mode="light"] .bg-green-500\/10 {
+  background-color: var(--t-accent-soft-bg) !important;
+  border-color: var(--t-accent-soft-border) !important;
+}
+
+:root[data-theme-mode="light"] .hover\:bg-emerald-900:hover,
+:root[data-theme-mode="light"] .hover\:bg-emerald-900\/80:hover,
+:root[data-theme-mode="light"] .hover\:bg-emerald-900\/60:hover,
+:root[data-theme-mode="light"] .hover\:bg-emerald-950\/50:hover,
+:root[data-theme-mode="light"] .hover\:bg-emerald-950\/30:hover {
+  background-color: color-mix(in srgb, var(--t-accent-soft-bg) 80%, var(--t-primary-bg) 20%) !important;
+}
+
+:root[data-theme-mode="light"] .text-emerald-100,
+:root[data-theme-mode="light"] .text-emerald-200,
+:root[data-theme-mode="light"] .text-emerald-300,
+:root[data-theme-mode="light"] .text-emerald-400,
+:root[data-theme-mode="light"] .text-emerald-400\/80,
+:root[data-theme-mode="light"] .text-emerald-500\/80,
+:root[data-theme-mode="light"] .text-emerald-500\/70,
+:root[data-theme-mode="light"] .text-emerald-500\/60,
+:root[data-theme-mode="light"] .text-green-200,
+:root[data-theme-mode="light"] .text-green-300,
+:root[data-theme-mode="light"] .text-green-400,
+:root[data-theme-mode="light"] .text-teal-300 {
+  color: var(--t-accent-text) !important;
+}
+
+:root[data-theme-mode="light"] .border-emerald-500,
+:root[data-theme-mode="light"] .border-emerald-600,
+:root[data-theme-mode="light"] .border-emerald-600\/70,
+:root[data-theme-mode="light"] .border-emerald-600\/60,
+:root[data-theme-mode="light"] .border-emerald-600\/50,
+:root[data-theme-mode="light"] .border-emerald-700,
+:root[data-theme-mode="light"] .border-emerald-700\/80,
+:root[data-theme-mode="light"] .border-emerald-700\/70,
+:root[data-theme-mode="light"] .border-emerald-700\/60,
+:root[data-theme-mode="light"] .border-emerald-700\/50 {
+  border-color: var(--t-primary-border) !important;
+}
+
+:root[data-theme-mode="light"] .border-emerald-800,
+:root[data-theme-mode="light"] .border-emerald-800\/80,
+:root[data-theme-mode="light"] .border-emerald-800\/60,
+:root[data-theme-mode="light"] .border-emerald-800\/50,
+:root[data-theme-mode="light"] .border-emerald-800\/40,
+:root[data-theme-mode="light"] .border-emerald-800\/30,
+:root[data-theme-mode="light"] .border-emerald-900\/60,
+:root[data-theme-mode="light"] .border-emerald-900\/40 {
+  border-color: var(--t-accent-soft-border) !important;
+}
+
+/* 2) SKY / BLUE / CYAN / TEAL BUTTONS & BADGES (e.g., POS "Live Stock" Button) */
+:root[data-theme-mode="light"] .bg-sky-950,
+:root[data-theme-mode="light"] .bg-sky-950\/80,
+:root[data-theme-mode="light"] .bg-sky-950\/70,
+:root[data-theme-mode="light"] .bg-sky-950\/60,
+:root[data-theme-mode="light"] .bg-sky-950\/50,
+:root[data-theme-mode="light"] .bg-sky-950\/40,
+:root[data-theme-mode="light"] .bg-sky-950\/30,
+:root[data-theme-mode="light"] .bg-sky-500\/20,
+:root[data-theme-mode="light"] .bg-blue-950,
+:root[data-theme-mode="light"] .bg-blue-950\/90,
+:root[data-theme-mode="light"] .bg-blue-950\/80,
+:root[data-theme-mode="light"] .bg-blue-950\/70,
+:root[data-theme-mode="light"] .bg-blue-950\/60,
+:root[data-theme-mode="light"] .bg-blue-950\/40,
+:root[data-theme-mode="light"] .bg-blue-900\/60,
+:root[data-theme-mode="light"] .bg-cyan-950,
+:root[data-theme-mode="light"] .bg-cyan-950\/80,
+:root[data-theme-mode="light"] .bg-cyan-950\/20,
+:root[data-theme-mode="light"] .bg-teal-950\/80 {
+  background-color: #e0f2fe !important;
+  border-color: #7dd3fc !important;
+}
+
+:root[data-theme-mode="light"] .hover\:bg-sky-900\/70:hover,
+:root[data-theme-mode="light"] .hover\:bg-blue-900:hover,
+:root[data-theme-mode="light"] .hover\:bg-blue-950\/60:hover {
+  background-color: #bae6fd !important;
+}
+
+:root[data-theme-mode="light"] .text-sky-100,
+:root[data-theme-mode="light"] .text-sky-200,
+:root[data-theme-mode="light"] .text-sky-300,
+:root[data-theme-mode="light"] .text-sky-400 {
+  color: #0369a1 !important;
+}
+
+:root[data-theme-mode="light"] .text-blue-200,
+:root[data-theme-mode="light"] .text-blue-300,
+:root[data-theme-mode="light"] .text-blue-400,
+:root[data-theme-mode="light"] .text-blue-400\/80 {
+  color: #1d4ed8 !important;
+}
+
+:root[data-theme-mode="light"] .text-cyan-200,
+:root[data-theme-mode="light"] .text-cyan-300,
+:root[data-theme-mode="light"] .text-cyan-400 {
+  color: #0e7490 !important;
+}
+
+:root[data-theme-mode="light"] .border-sky-700\/60,
+:root[data-theme-mode="light"] .border-sky-800\/60,
+:root[data-theme-mode="light"] .border-blue-700,
+:root[data-theme-mode="light"] .border-blue-700\/60,
+:root[data-theme-mode="light"] .border-blue-800,
+:root[data-theme-mode="light"] .border-blue-800\/60,
+:root[data-theme-mode="light"] .border-blue-800\/40,
+:root[data-theme-mode="light"] .border-blue-900\/60,
+:root[data-theme-mode="light"] .border-cyan-700,
+:root[data-theme-mode="light"] .border-cyan-800,
+:root[data-theme-mode="light"] .border-cyan-800\/60,
+:root[data-theme-mode="light"] .border-cyan-900\/40,
+:root[data-theme-mode="light"] .border-teal-800,
+:root[data-theme-mode="light"] .border-teal-800\/60 {
+  border-color: #7dd3fc !important;
+}
+
+/* 3) INDIGO & PURPLE BUTTONS & BADGES (e.g., POS "Max Rows View" Button) */
+:root[data-theme-mode="light"] .bg-indigo-950,
+:root[data-theme-mode="light"] .bg-indigo-950\/80,
+:root[data-theme-mode="light"] .bg-indigo-950\/50,
+:root[data-theme-mode="light"] .bg-indigo-500\/20,
+:root[data-theme-mode="light"] .bg-indigo-500\/10 {
+  background-color: #e0e7ff !important;
+  border-color: #a5b4fc !important;
+}
+
+:root[data-theme-mode="light"] .hover\:bg-indigo-900\/60:hover {
+  background-color: #c7d2fe !important;
+}
+
+:root[data-theme-mode="light"] .bg-purple-950,
+:root[data-theme-mode="light"] .bg-purple-950\/80,
+:root[data-theme-mode="light"] .bg-purple-950\/60,
+:root[data-theme-mode="light"] .bg-purple-500\/20,
+:root[data-theme-mode="light"] .bg-purple-500\/10 {
+  background-color: #f3e8ff !important;
+  border-color: #d8b4fe !important;
+}
+
+:root[data-theme-mode="light"] .text-indigo-100,
+:root[data-theme-mode="light"] .text-indigo-300,
+:root[data-theme-mode="light"] .text-indigo-400 {
+  color: #3730a3 !important;
+}
+
+:root[data-theme-mode="light"] .text-purple-300,
+:root[data-theme-mode="light"] .text-purple-400 {
+  color: #6b21a8 !important;
+}
+
+:root[data-theme-mode="light"] .border-indigo-600\/60,
+:root[data-theme-mode="light"] .border-indigo-700\/60,
+:root[data-theme-mode="light"] .border-indigo-800\/60 {
+  border-color: #818cf8 !important;
+}
+
+:root[data-theme-mode="light"] .border-purple-800,
+:root[data-theme-mode="light"] .border-purple-800\/80,
+:root[data-theme-mode="light"] .border-purple-800\/60,
+:root[data-theme-mode="light"] .border-purple-800\/40 {
+  border-color: #c084fc !important;
+}
+
+/* 4) AMBER & YELLOW WARNING CALLOUTS & BADGES */
+:root[data-theme-mode="light"] .bg-amber-950,
+:root[data-theme-mode="light"] .bg-amber-950\/90,
+:root[data-theme-mode="light"] .bg-amber-950\/80,
+:root[data-theme-mode="light"] .bg-amber-950\/70,
+:root[data-theme-mode="light"] .bg-amber-950\/60,
+:root[data-theme-mode="light"] .bg-amber-950\/50,
+:root[data-theme-mode="light"] .bg-amber-950\/40,
+:root[data-theme-mode="light"] .bg-amber-950\/30,
+:root[data-theme-mode="light"] .bg-amber-950\/20,
+:root[data-theme-mode="light"] .bg-amber-900\/80,
+:root[data-theme-mode="light"] .bg-amber-900\/40,
+:root[data-theme-mode="light"] .bg-amber-600\/30,
+:root[data-theme-mode="light"] .bg-amber-500\/20,
+:root[data-theme-mode="light"] .bg-amber-500\/10,
+:root[data-theme-mode="light"] .bg-yellow-950\/80 {
+  background-color: #fef3c7 !important;
+  border-color: #fbbf24 !important;
+}
+
+:root[data-theme-mode="light"] .hover\:bg-amber-900:hover,
+:root[data-theme-mode="light"] .hover\:bg-amber-900\/60:hover,
+:root[data-theme-mode="light"] .hover\:bg-amber-900\/50:hover,
+:root[data-theme-mode="light"] .hover\:bg-amber-950\/35:hover {
+  background-color: #fde68a !important;
+}
+
+:root[data-theme-mode="light"] .text-amber-200,
+:root[data-theme-mode="light"] .text-amber-300,
+:root[data-theme-mode="light"] .text-amber-300\/90,
+:root[data-theme-mode="light"] .text-amber-400,
+:root[data-theme-mode="light"] .text-amber-400\/80,
+:root[data-theme-mode="light"] .text-yellow-300 {
+  color: #b45309 !important;
+}
+
+:root[data-theme-mode="light"] .border-amber-600\/80,
+:root[data-theme-mode="light"] .border-amber-600\/70,
+:root[data-theme-mode="light"] .border-amber-700,
+:root[data-theme-mode="light"] .border-amber-700\/60,
+:root[data-theme-mode="light"] .border-amber-700\/50,
+:root[data-theme-mode="light"] .border-amber-800,
+:root[data-theme-mode="light"] .border-amber-800\/80,
+:root[data-theme-mode="light"] .border-amber-800\/60,
+:root[data-theme-mode="light"] .border-amber-800\/50,
+:root[data-theme-mode="light"] .border-amber-800\/40,
+:root[data-theme-mode="light"] .border-amber-900\/50,
+:root[data-theme-mode="light"] .border-amber-900\/40,
+:root[data-theme-mode="light"] .border-yellow-800\/60 {
+  border-color: #f59e0b !important;
+}
+
+/* 5) ROSE & RED DANGER CALLOUTS & DESTRUCTIVE OUTLINE BUTTONS */
+:root[data-theme-mode="light"] .bg-rose-950,
+:root[data-theme-mode="light"] .bg-rose-950\/80,
+:root[data-theme-mode="light"] .bg-rose-950\/70,
+:root[data-theme-mode="light"] .bg-rose-950\/60,
+:root[data-theme-mode="light"] .bg-rose-950\/50,
+:root[data-theme-mode="light"] .bg-rose-950\/40,
+:root[data-theme-mode="light"] .bg-rose-950\/30,
+:root[data-theme-mode="light"] .bg-rose-900,
+:root[data-theme-mode="light"] .bg-rose-900\/80,
+:root[data-theme-mode="light"] .bg-red-950\/80,
+:root[data-theme-mode="light"] .bg-red-950\/50 {
+  background-color: #ffe4e6 !important;
+  border-color: #fda4af !important;
+}
+
+:root[data-theme-mode="light"] .hover\:bg-rose-900:hover,
+:root[data-theme-mode="light"] .hover\:bg-rose-900\/70:hover,
+:root[data-theme-mode="light"] .hover\:bg-rose-950\/50:hover,
+:root[data-theme-mode="light"] .hover\:bg-rose-950\/40:hover {
+  background-color: #fecdd3 !important;
+}
+
+:root[data-theme-mode="light"] .text-rose-200,
+:root[data-theme-mode="light"] .text-rose-300,
+:root[data-theme-mode="light"] .text-rose-400,
+:root[data-theme-mode="light"] .text-rose-400\/80,
+:root[data-theme-mode="light"] .text-rose-500,
+:root[data-theme-mode="light"] .text-red-200,
+:root[data-theme-mode="light"] .text-red-300,
+:root[data-theme-mode="light"] .text-red-400 {
+  color: #be123c !important;
+}
+
+:root[data-theme-mode="light"] .border-rose-700\/60,
+:root[data-theme-mode="light"] .border-rose-700\/50,
+:root[data-theme-mode="light"] .border-rose-800,
+:root[data-theme-mode="light"] .border-rose-800\/80,
+:root[data-theme-mode="light"] .border-rose-800\/70,
+:root[data-theme-mode="light"] .border-rose-800\/60,
+:root[data-theme-mode="light"] .border-rose-800\/40,
+:root[data-theme-mode="light"] .border-rose-900\/80,
+:root[data-theme-mode="light"] .border-rose-900\/70,
+:root[data-theme-mode="light"] .border-rose-900\/60,
+:root[data-theme-mode="light"] .border-rose-900\/50,
+:root[data-theme-mode="light"] .border-red-800,
+:root[data-theme-mode="light"] .border-red-800\/80 {
+  border-color: #fb7185 !important;
+}
+
+/* Neutral Hover States */
+:root[data-theme-mode="light"] .hover\:bg-slate-950\/40:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-900:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-900\/80:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-900\/70:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-900\/60:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-900\/50:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-900\/40:hover {
+  background-color: var(--t-subtle) !important;
+}
+
+:root[data-theme-mode="light"] .hover\:bg-slate-850:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-800:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-800\/80:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-800\/70:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-800\/60:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-800\/40:hover {
+  background-color: var(--t-muted) !important;
+}
+
+:root[data-theme-mode="light"] .hover\:bg-slate-700:hover,
+:root[data-theme-mode="light"] .hover\:bg-slate-600:hover {
+  background-color: var(--t-border) !important;
+}
+
+:root[data-theme-mode="light"] .hover\:text-white:hover,
+:root[data-theme-mode="light"] .hover\:text-slate-100:hover {
+  color: var(--t-text-primary) !important;
+}
+
+:root[data-theme-mode="light"] .hover\:text-slate-200:hover,
+:root[data-theme-mode="light"] .hover\:text-slate-300:hover {
+  color: var(--t-text-secondary) !important;
+}
+
+/* Preserve Crisp Dark Ink on White Paper Thermal Receipts & Print Previews in ALL Themes */
+.bg-white .text-slate-900,
+#printable-receipt .text-slate-900 {
+  color: #0f172a !important;
+}
+
+.bg-white .text-slate-800,
+#printable-receipt .text-slate-800 {
+  color: #1e293b !important;
+}
+
+.bg-white .text-slate-700,
+#printable-receipt .text-slate-700 {
+  color: #334155 !important;
+}
+
+.bg-white .text-slate-500,
+#printable-receipt .text-slate-500 {
+  color: #475569 !important;
+}
+
+/* Final Cascade Guardrail: Guarantee Crisp Foreground Contrast inside Solid Buttons */
+:root[data-theme-mode="light"] .bg-emerald-600,
+:root[data-theme-mode="light"] .bg-emerald-600 *,
+:root[data-theme-mode="light"] .bg-emerald-600\/90,
+:root[data-theme-mode="light"] .bg-emerald-600\/90 *,
+:root[data-theme-mode="light"] .bg-emerald-500,
+:root[data-theme-mode="light"] .bg-emerald-500 *,
+:root[data-theme-mode="light"] .bg-emerald-700,
+:root[data-theme-mode="light"] .bg-emerald-700 *,
+:root[data-theme-mode="light"] .bg-green-600,
+:root[data-theme-mode="light"] .bg-green-600 * {
+  color: var(--t-primary-fg) !important;
+}
+
+:root[data-theme-mode="light"] .bg-rose-600,
+:root[data-theme-mode="light"] .bg-rose-600 *,
+:root[data-theme-mode="light"] .bg-rose-700,
+:root[data-theme-mode="light"] .bg-rose-700 *,
+:root[data-theme-mode="light"] .bg-indigo-600,
+:root[data-theme-mode="light"] .bg-indigo-600 *,
+:root[data-theme-mode="light"] .bg-blue-600,
+:root[data-theme-mode="light"] .bg-blue-600 *,
+:root[data-theme-mode="light"] .bg-sky-600,
+:root[data-theme-mode="light"] .bg-sky-600 *,
+:root[data-theme-mode="light"] .bg-amber-600,
+:root[data-theme-mode="light"] .bg-amber-600 * {
+  color: #ffffff !important;
+}
+
+/* Form Controls */
+:root[data-theme-mode="light"] input:not([type="checkbox"]):not([type="radio"]):not(.bg-transparent),
+:root[data-theme-mode="light"] select:not(.bg-transparent),
+:root[data-theme-mode="light"] textarea:not(.bg-transparent) {
+  background-color: var(--t-input-bg) !important;
+  color: var(--t-text-primary) !important;
+  border-color: var(--t-border-strong) !important;
+}
+
+:root[data-theme-mode="light"] select option,
+:root[data-theme-mode="light"] select optgroup {
+  background-color: var(--t-card) !important;
+  color: var(--t-text-primary) !important;
+}
+
+:root[data-theme-mode="light"] input:focus,
+:root[data-theme-mode="light"] select:not(.bg-transparent):focus,
+:root[data-theme-mode="light"] textarea:focus {
+  border-color: var(--t-primary-border) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--t-primary-bg) 22%, transparent) !important;
+}
+
+:root[data-theme-mode="light"] input::placeholder,
+:root[data-theme-mode="light"] textarea::placeholder {
+  color: var(--t-text-faint) !important;
+}
+
+/* Theme-Specific Corner Radius Scaling */
+:root[data-theme-mode="light"] .rounded,
+:root[data-theme-mode="light"] .rounded-sm {
+  border-radius: var(--t-radius-sm) !important;
+}
+
+:root[data-theme-mode="light"] .rounded-md,
+:root[data-theme-mode="light"] .rounded-lg {
+  border-radius: var(--t-radius-md) !important;
+}
+
+:root[data-theme-mode="light"] .rounded-xl,
+:root[data-theme-mode="light"] .rounded-2xl {
+  border-radius: var(--t-radius-lg) !important;
+}
+
+/* Windows XP Authentic Close Button & Luna Bevel Details */
+:root[data-theme="windows-xp"] .app-titlebar-close {
+  background: linear-gradient(180deg, #f17965 0%, #d93822 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff88 !important;
+  border-radius: 3px !important;
+}
+
+:root[data-theme="windows-xp"] .app-titlebar-close svg {
+  color: #ffffff !important;
+}
+
+/* Neon Theme Glow Accent on Active Buttons */
+:root[data-theme="white-green-neon"] .bg-emerald-600,
+:root[data-theme="white-green-neon"] .bg-emerald-500 {
+  box-shadow: 0 0 0 1px #00b84c, 0 2px 10px rgba(0, 230, 118, 0.28) !important;
+}
+
+/* Miniature Theme Preview Swatch Classes (Settings -> Themes & Layout) */
+.theme-preview-frame {
+  background-color: var(--t-canvas) !important;
+  border-color: var(--t-border) !important;
+  border-radius: var(--t-radius-lg) !important;
+}
+
+.theme-preview-titlebar {
+  background: var(--t-titlebar-bg) !important;
+  color: var(--t-titlebar-fg) !important;
+  border-bottom: 1px solid var(--t-border) !important;
+}
+
+.theme-preview-titlebar span {
+  color: var(--t-titlebar-fg) !important;
+}
+
+.theme-preview-sidebar {
+  background: var(--t-sidebar-bg) !important;
+  border-right: 1px solid var(--t-border) !important;
+}
+
+.theme-preview-primary {
+  background-color: var(--t-primary-bg) !important;
+  color: var(--t-primary-fg) !important;
+  border-radius: var(--t-radius-sm) !important;
+}
+
+.theme-preview-line {
+  background-color: var(--t-border) !important;
+}
+
+.theme-preview-card {
+  background-color: var(--t-card) !important;
+  border: 1px solid var(--t-border) !important;
+  border-radius: var(--t-radius-md) !important;
+}
+
+.theme-preview-swatch-card {
+  background-color: var(--t-card) !important;
+  border-color: var(--t-border) !important;
+}
+
+.theme-preview-swatch-canvas {
+  background-color: var(--t-canvas) !important;
+  border-color: var(--t-border) !important;
+}
+
+.theme-preview-swatch-sidebar {
+  background: var(--t-sidebar-bg) !important;
+  border-color: var(--t-border) !important;
+}
+
+.theme-preview-swatch-primary {
+  background-color: var(--t-primary-bg) !important;
+  border-color: var(--t-border) !important;
+}
+
+/* ============================================================================
+   STANDALONE ELECTRON FRAMELESS WINDOW DRAG REGIONS
+   ============================================================================ */
+.app-titlebar {
+  -webkit-app-region: drag;
+}
+
+.app-titlebar button,
+.app-titlebar a,
+.app-titlebar input,
+.app-titlebar select,
+.app-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* ============================================================================
+   WORKSPACE LAYOUT MODES: SIMPLE CLEAN & CLASSIC SPREADSHEET GRID
+   ============================================================================ */
+
+/* SIMPLE CLEAN LAYOUT: Hides OS window frame & technical port clutter */
+:root[data-layout="simple"] .app-titlebar,
+:root[data-layout="simple"] .app-tech-telemetry,
+:root[data-layout="simple"] .app-sidebar-valuation-extra {
+  display: none !important;
+}
+
+/* CLASSIC SPREADSHEET GRID LAYOUT: Crisp square edges + accounting cell gridlines */
+:root[data-layout="classic"] .rounded,
+:root[data-layout="classic"] .rounded-md,
+:root[data-layout="classic"] .rounded-lg,
+:root[data-layout="classic"] .rounded-xl,
+:root[data-layout="classic"] .rounded-2xl {
+  border-radius: 2px !important;
+}
+
+:root[data-layout="classic"] table {
+  border-collapse: collapse !important;
+}
+
+:root[data-layout="classic"] table th,
+:root[data-layout="classic"] table td {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.26);
+  border-right: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+:root[data-theme-mode="light"][data-layout="classic"] table th,
+:root[data-theme-mode="light"][data-layout="classic"] table td {
+  border-bottom: 1px solid var(--t-border) !important;
+  border-right: 1px solid var(--t-border) !important;
+}
+
+:root[data-layout="classic"] table th:last-child,
+:root[data-layout="classic"] table td:last-child {
+  border-right: none !important;
+}
+
+/* ============================================================================
+   CUSTOM SCROLLBARS
+   ============================================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.42);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.68);
+}
+
+:root[data-theme-mode="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.45);
+}
+
+:root[data-theme-mode="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.72);
+}
+
+/* ============================================================================
+   THERMAL POS DIRECT PRINT SPECIFICATIONS
+   Ensures 100% clean thermal printing without UI backgrounds or theme tinting
+   ============================================================================ */
+@media print {
+  @page {
+    size: auto;
+    margin: 0mm !important;
+  }
+
+  :root,
+  html,
+  body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  header,
+  nav,
+  aside,
+  button,
+  .toast-container,
+  #toast-root,
+  .fixed.inset-0:not(.print-container-active) {
+    display: none !important;
+  }
+
+  .fixed.inset-0.print-container-active {
+    position: static !important;
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .fixed.inset-0.print-container-active .border-b:not(#printable-receipt *):not(#printable-ink-order *),
+  .fixed.inset-0.print-container-active .border-t:not(#printable-receipt *):not(#printable-ink-order *),
+  .fixed.inset-0.print-container-active button {
+    display: none !important;
+  }
+
+  #printable-receipt,
+  #printable-receipt *,
+  #printable-ink-order,
+  #printable-ink-order * {
+    color: #000000 !important;
+  }
+
+  #printable-receipt,
+  #printable-ink-order {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    margin: 0 auto !important;
+    padding: 2mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    max-width: 100% !important;
+  }
+
+  body.is-thermal-printing #root {
+    display: none !important;
+  }
+  body.is-thermal-printing > *:not(#pos-direct-print-container) {
+    display: none !important;
+  }
+  #pos-direct-print-container,
+  #pos-direct-print-container * {
+    color: #000000 !important;
+  }
+  #pos-direct-print-container {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    z-index: 999999 !important;
+  }
+}
+
+#pos-direct-print-container {
+  display: none;
+}
+

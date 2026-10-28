@@ -1,0 +1,7 @@
+{
+  "name": "PharmaCore Database Purge",
+  "description": "Refactor PharmaCore to eliminate dummy data and enforce strict real-time SQL Server 2008 R2 connectivity via environment variables.",
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
